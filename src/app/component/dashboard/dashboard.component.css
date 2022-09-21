@@ -1,0 +1,10 @@
+.sidebar a{
+  text-decoration: none;
+  color: rgb(227, 221, 212);
+  display: block !important;
+  cursor: pointer;
+}
+
+.sidebar a:hover{
+transform: scale(1.02);
+}

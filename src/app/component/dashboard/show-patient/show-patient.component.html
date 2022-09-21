@@ -1,0 +1,32 @@
+<div class="card shadow m-0 p-0 me-3 mt-2">
+  <div class="m-3 me-3">
+    <h6 for="exampleInputEmail1" class="form-label"><b>Enter Patient ID</b></h6>
+    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="patientId" [(ngModel)]="patientId">
+    <div class="btn btn-outline-primary mt-2" (click)="findPatient()">Search</div>
+  </div>
+</div>
+
+<div *ngIf="displayInfo" class="me-3">
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title text-success">Patient Info : </h5>
+      <h6>Patient Id : {{patientObj.patientId}}</h6>
+      <h6>Patient Name : {{patientObj.name}}</h6>
+      <h6>Doctor Name : {{patientObj.doctorName}}</h6>
+      <h6>Visited date : {{patientObj.visitDate}}</h6>
+      <h6>Prescription : {{patientObj.prescription}}</h6>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="emptyMsgInfo" class="me-3">
+  <div class="card mt-4">
+    <div class="card-body">
+      <div class="alert alert-danger" role="alert">
+        Patient not found with id : {{patientId}}
+      </div>
+    </div>
+  </div>
+</div>
+
+

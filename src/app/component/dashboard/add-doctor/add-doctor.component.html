@@ -1,0 +1,96 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-md-8 col-xs-12 mt-5 card shadow">
+     
+      <form [formGroup]="doctorRegistrationForm" (ngSubmit)="registerDoctor()">
+        <div class="form-group">
+          <h3 class="text-primary mt-3 mb-3">Doctor Registration Form</h3>
+
+          <hr>
+
+          <div class="mb-3">
+            <h6 >Name</h6>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="name">
+            <div *ngIf="doctorRegistrationForm.get('name')?.invalid && (doctorRegistrationForm.get('name')?.dirty || doctorRegistrationForm.get('name')?.touched)" class="text-danger">
+              This is required field
+            </div>
+          </div>
+
+          <h6 class="mt-3">Select Gender</h6>
+          <select class="form-control" formControlName="gender">
+            <option *ngFor="let gen of genderArr; let i = index" value="{{gen}}">{{gen}}</option>
+          </select>
+          <div *ngIf="doctorRegistrationForm.get('gender')?.invalid && (doctorRegistrationForm.get('gender')?.dirty || doctorRegistrationForm.get('gender')?.touched)" class="text-danger">
+            This is required field
+          </div>
+
+          <div class="mb-3">
+            <h6 >Age</h6>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="age">
+            <div *ngIf="doctorRegistrationForm.get('age')?.invalid && (doctorRegistrationForm.get('age')?.dirty || doctorRegistrationForm.get('age')?.touched)" class="text-danger">
+              This is required field
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <h6 >Specialization</h6>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="specialization">
+            <div *ngIf="doctorRegistrationForm.get('specialization')?.invalid && (doctorRegistrationForm.get('specialization')?.dirty || doctorRegistrationForm.get('specialization')?.touched)" class="text-danger">
+              This is required field
+            </div>
+          </div>
+          <div class="mb-3">
+            <h6 >NumberOfPatientsVisited</h6>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="numberofpatientsvisited">
+            <div *ngIf="doctorRegistrationForm.get('numberofpatientsvisited')?.invalid && (doctorRegistrationForm.get('numberofpatientsvisited')?.dirty || doctorRegistrationForm.get('numberofpatientsvisited')?.touched)" class="text-danger">
+              This is required field
+            </div>
+          </div>
+
+        </div>
+        <div class="col-6">
+          <div class="mb-3 mt-3 me-auto ms-auto">
+            <button class="btn btn-outline-primary" type="submit" [disabled]="doctorRegistrationForm.invalid">Submit</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+
+<div>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" #successModal hidden></button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="alert alert-success" role="alert">
+            {{response}}
+          </div>
+          <button type="button" class="btn btn-primary ms-0 me-0" data-bs-dismiss="modal" (click)="ngOnInit()">Ok</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#failModal" #failModal hidden></button>
+  <div class="modal fade" id="failModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="alert alert-danger" role="alert">
+            {{response}}
+          </div>
+          <button type="button" class="btn btn-primary ms-0 me-0" data-bs-dismiss="modal" (click)="ngOnInit()">Ok</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

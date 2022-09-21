@@ -1,0 +1,88 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-md-8 col-xs-12 mt-5 card shadow">
+
+      <form [formGroup]="patientRegistrationForm" (ngSubmit)="registerPatient()">
+        <div class="form-group">
+          <h3 class="text-success mt-3 mb-3">Patient Registration Form</h3>
+
+          <hr>
+
+          <div class="mb-3">
+            <h6 >Name</h6>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="name">
+            <div *ngIf="patientRegistrationForm.get('name')?.invalid && (patientRegistrationForm.get('name')?.dirty || patientRegistrationForm.get('name')?.touched)" class="text-danger">
+              This is required field
+            </div>
+          </div>
+
+          <h6 class="mt-3">Select Doctor</h6>
+          <select class="form-control" formControlName="doctor">
+            <option *ngFor="let doc of doctors; let i = index" value="{{doc?.doctorId}}">{{doc.name}}</option>
+          </select>
+          <div *ngIf="patientRegistrationForm.get('doctor')?.invalid && (patientRegistrationForm.get('doctor')?.dirty || patientRegistrationForm.get('doctor')?.touched)" class="text-danger">
+            This is required field
+          </div>
+
+          <div class="mb-3">
+            <h6 >Date</h6>
+            <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="date">
+            <div *ngIf="patientRegistrationForm.get('date')?.invalid && (patientRegistrationForm.get('date')?.dirty || patientRegistrationForm.get('date')?.touched)" class="text-danger">
+              This is required field
+            </div>
+          </div>
+          <div class="mb-3">
+            <h6 >Prescription</h6>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="prescription">
+            <div *ngIf="patientRegistrationForm.get('prescription')?.invalid && (patientRegistrationForm.get('prescription')?.dirty || patientRegistrationForm.get('prescription')?.touched)" class="text-danger">
+              This is required field
+            </div>
+          </div>
+
+        </div>
+        <div class="col-6">
+          <div class="mb-3 mt-3 me-auto ms-auto">
+            <button class="btn btn-outline-primary" type="submit" [disabled]="patientRegistrationForm.invalid">Submit</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+
+<div>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" #successModal hidden></button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="alert alert-success" role="alert">
+            {{response}}
+          </div>
+          <button type="button" class="btn btn-primary ms-0 me-0" data-bs-dismiss="modal" (click)="ngOnInit()">Ok</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#failModal" #failModal hidden></button>
+  <div class="modal fade" id="failModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="alert alert-danger" role="alert">
+            {{response}}
+          </div>
+          <button type="button" class="btn btn-primary ms-0 me-0" data-bs-dismiss="modal" (click)="ngOnInit()">Ok</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

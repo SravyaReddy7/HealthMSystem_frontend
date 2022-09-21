@@ -1,0 +1,23 @@
+<div class="card shadow m-0 p-0 me-3 mt-2">
+  <div class="m-3 me-3">
+    <label for="exampleInputEmail1" class="form-label"><b>Select doctor</b></label>
+    <select class="form-control" (change)="onDoctorSelect($event)">
+      <option value="">Select</option>
+      <option *ngFor="let doctor of doctorArr; let i = index" value="{{doctor?.doctorId}}">{{doctor.name}}</option>
+    </select>
+  </div>
+</div>
+
+<div *ngIf="displayInfo" class="me-3">
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title text-success">Doctor Info : </h5>
+      <h6>Doctor Id : {{doctorObj.doctorId}}</h6>
+      <h6>Doctor Name : {{doctorObj.name}}</h6>
+      <h6>Age : {{doctorObj.age}}</h6>
+      <h6>Gender : {{doctorObj.gender}}</h6>
+      <h6>NumberOfPatientsVisited : {{doctorObj.numberOfPatientsvisited}}</h6>
+      <h6>Specialization : {{doctorObj.specialization}}</h6>
+    </div>
+  </div>
+</div>
